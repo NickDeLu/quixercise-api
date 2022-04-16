@@ -37,6 +37,7 @@ exports.updateUser = async (req, res) => {
 
 exports.loginUser = async (req, res) => {
     const { email, password } = req.body.user
+    console.log(JSON.stringify(req.body.user))
     try {
         let response = await User.getUserFromEmail(email);
         if (Buffer.from(response.rows[0].pwd, 'base64').toString() == password) {
