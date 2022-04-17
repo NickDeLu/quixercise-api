@@ -26,9 +26,11 @@ exports.createUser = async (req, res) => {
 
 exports.updateUser = async (req, res) => {
     const user = req.body.user
+    console.log("incoming user", JSON.stringify(req.body.user))
     try {
         let response = await User.updateUser(user);
         response.rows[0].pwd = "";
+        console.log("after update", JSON.stringify(response.rows[0]))
         res.status(200).json(response.rows[0])
     } catch (err) {
         res.status(500).json(err)
