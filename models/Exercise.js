@@ -18,7 +18,7 @@ module.exports = class Exercise {
     }
 
     static saveUserExercise(exercise) {
-        return db.query('INSERT INTO exercise (id, userId, bodyPart, equipment, gifUrl, name, target)  values ($1,$2,$3,$4,$5,$6,$7) RETURNING *',
+        return db.query('INSERT INTO exercise (id, userId, "bodyPart", equipment, "gifUrl", name, target)  values ($1,$2,$3,$4,$5,$6,$7) RETURNING *',
             [exercise.id, exercise.userId, exercise.bodyPart, exercise.equipment, exercise.gifUrl, exercise.name, exercise.target]);
     }
 
