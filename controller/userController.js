@@ -27,7 +27,6 @@ exports.createUser = async (req, res) => {
 
 exports.updateUser = async (req, res) => {
     const user = req.body.user
-    console.log("incoming user", JSON.stringify(req.body.user))
     try {
         let response = await User.updateUser(user);
         response.rows[0].pwd = "";
