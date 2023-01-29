@@ -23,7 +23,7 @@ module.exports = class Exercise {
     }
 
     static removeUserExercise(userId, exerciseId) {
-        return db.query('DELETE FROM exercise where userId = $1 and id = $2', [userId, exerciseId]);
+        return db.query('DELETE FROM exercise where "userId" = $1 and id = $2', [userId, exerciseId]);
     }
 
 }
