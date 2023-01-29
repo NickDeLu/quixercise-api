@@ -55,7 +55,7 @@ exports.loginUser = async (req, res) => {
     }
 };
 
-//exercises
+//exercise handlers
 
 exports.getUserExercises = async (req, res) => {
 
