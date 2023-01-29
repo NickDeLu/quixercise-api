@@ -14,7 +14,7 @@ module.exports = class Exercise {
     }
 
     static getUserExercises(id) {
-        return db.query('SELECT * FROM exercise where userId = $1', [id]);
+        return db.query('SELECT * FROM exercise where "userId" = $1', [id]);
     }
 
     static saveUserExercise(exercise) {
