@@ -1,4 +1,5 @@
 const User = require('../models/User');
+const Exercise = require('../models/Exercise');
 
 exports.getUser = async (req, res) => {
 
@@ -51,5 +52,39 @@ exports.loginUser = async (req, res) => {
     } catch (err) {
         console.log("lOGIN ERROR")
         res.status(500).json({ ...err, msg: "login failed" })
+    }
+};
+
+//exercises
+
+exports.getUserExercises = async (req, res) => {
+
+    try {
+        let response = await Exercise.getUserExercises(req.param('id'));
+        res.status(200).json(response.rows) //returns an array by default but in this case theres only ever one project returned hence the [0]
+    } catch (err) {
+        console.log(err)
+        res.status(500).json(err)
+    }
+};
+
+exports.saveUserExercise = async (req, res) => {
+    const exercise = req.body.exercise
+    exercise.userId = req.param('id')
+    try {
+        let response = await Exercise.saveUserExercise(exercise);
+        res.status(201).json(response.rows[0])
+    } catch (err) {
+        res.status(500).json(err)
+    }
+};
+
+exports.removeUserExercise = async (req, res) => {
+
+    try {
+        let response = await Exercise.removeUserExercise(req.param('id'), req.param('exerciseId'));
+        res.status(200).json(response.rows[0])
+    } catch (err) {
+        res.status(500).json(err)
     }
 };
